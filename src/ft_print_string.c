@@ -7,7 +7,7 @@ int ft_print_s(char *s)
     i = 0;
     if (!s)
     {
-        ft_putstr_fd("(null)", 1);
+        ft_putstr_fd("(nil)", 1);
         return (6);
     }
     while (s[i])
