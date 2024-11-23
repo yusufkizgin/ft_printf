@@ -1,4 +1,9 @@
 // yapılacak dönüşümler : c, s, d, i, u, x, X, p
+//string her zaman aynı ve args her çağırılışında birinci indeksten başlayıp
+        //bir sonrakine geçtiği için her çağırılışında kendi parametresi ile eşlenir
+
+//hex ve pointer kaldı.
+
 #include <stdarg.h> 
 
 static int  check_t(va_list args, char type)
@@ -11,7 +16,7 @@ static int  check_t(va_list args, char type)
     else if (type == 's')
 		i += print_string(va_arg(args, char *)); // +
 	else if (type == 'p')
-		i += print_pointer(va_arg(args, unsigned long), 87); //hexadecimal dönüşümünde ondalık karşığını bulmak için 87 eklenir
+		i = i + print_string("0x") + print_hex(va_arg(args, unsigned long), 87); //hexadecimal dönüşümünde ondalık karşığını bulmak için 87 eklenir
 	else if (type == 'd' || type == 'i')
 		i += print_int(va_arg(args, int));
 	else if (type == 'u')
